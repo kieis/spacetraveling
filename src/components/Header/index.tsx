@@ -6,8 +6,8 @@ import styles from "./header.module.scss";
 import logo from "../../../public/images/logo.svg";
 
 export default function Header() {
-  const { asPath } = useRouter();
-  const isHomePage = asPath.search('/post/') === -1;
+  const router = useRouter();
+  const isHomePage = router?.asPath?.search('/post/') === -1;
 
   return (
     <header className={isHomePage ? `${styles.headerContent} ${styles.headerHomePadding}` : `${styles.headerContent}`}>

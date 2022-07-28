@@ -67,7 +67,7 @@ export default function Post({ post }: PostProps) {
       <header>
         <h1>{post.data.title}</h1>
         <div>
-          <span><FiCalendar/>{post.first_publication_date}</span>
+          <span><FiCalendar/>{dateFormat(post.first_publication_date)}</span>
           <span><FiUser/>{post.data.author}</span>
           <span><FiClock/>{getTimeReading()} min</span>
         </div>
@@ -75,7 +75,7 @@ export default function Post({ post }: PostProps) {
       {
         post.data.content.map((content) => {
           return (
-            <section key={post.data.title}>
+            <section key={post.data.title.replace(' ', '-')}>
               <h1>{content.heading}</h1>      
               {content.body.map(body => {
                 return (<p>{body.text}</p>)
@@ -112,7 +112,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await prismic.getByUID('posts', String(slug), {});
 
   const post: Post = {
-    first_publication_date: dateFormat(response.first_publication_date),
+    first_publication_date: response.first_publication_date,
     data: {
       title: response.data.title,
       banner: {
