@@ -4,4 +4,25 @@
   padding: 0;
 }
 
+:root {
+  --bg-color: #1A1D23;
+  --highlight: #FF57B2;
+  --heading: #F8F8F8;
+  --info: #BBBBBB;
+  --body: #D7D7D7;
+
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
 // TODO
